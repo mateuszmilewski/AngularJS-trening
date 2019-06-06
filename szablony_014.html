@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" ng-app>
+
+<head>
+    <meta charset="utf-8">
+    <title>Szablony po stronie klienta</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+    <script>
+        // narazie robimy tak, ze wszystko robi w jednym pliku, poniewaz przyklady nie sa rozbudowane
+        // wiec mozemy tak dzialac - yo jeszcze na starej klawiaturze za 10 zl a dziala w sumie bardzo podobnie
+        // do tej za majatek ;)
+
+
+        // pierwszy wg mnie waznym elementem tego prostego przykladu jest wykorzystanie ng-app bez zadnej nazwy
+        // tj bezposrednio zakladam, ze scope jest globalny i nie wymaga tworzenia specjalnej zmiennej dopasowanej
+        // do frameworku
+
+        // w sumie banalnie proste - funkcja trakowana jest bezposrenio jako controller bez zadnych dodatkowych
+        // prefixow czy cos - jedyne co jest potrzebne w liscie argumentow funkcji nalezy podac %scope i tylu
+        function ToJestController($scope) {
+            $scope.toJestObiekt = {
+                param: "to jest text znajdujacy sie w paramie obiektu"
+            };
+        }
+
+
+        // dla tego przykladu potrzbny jest nam jedynie angular.js - pozostale dla picu sa zalaczone.
+
+    </script>
+</head>
+
+<body>
+
+    <h1>Przyklad z ksiazki strona: 12</h1>
+
+
+    <div ng-controller="ToJestController">
+        <h2>
+            {{ toJestObiekt.param }}
+        </h2>
+    </div>
+
+
+
+</body>
+
+</html>
