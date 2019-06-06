@@ -9,6 +9,8 @@ work list :smile: :
 - [x] wstrzykiwanie_016 - oprócz $scope, mamy np. $location - ale to tylko tak...
 - [x] dyrektywy_17 - na przykladzie ng-repeat - tutaj dalej zasieg globalny
 - [x] modules_26 - kontroler w module
+- [x] ngbindexample_028 - alternatywa dla {{ }} -> ng-bind
+- [x] checkbox_029 - ng-model , ng-change, input type="checkbox"
 
 
 
