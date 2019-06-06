@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" ng-app>
+
+<head>
+    <meta charset="utf-8">
+    <title>NG-BIND EXAMPLE</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+    <script>
+        // dokladnie taka sama implementacja jak w pierwszym pierwszym przykladzie
+        // tylko zamiast podwojnych nawiasow klamrowych {{ .. }} uzywamy dyrektywy ng-bind
+        function ToJestController($scope) {
+            $scope.toJestObiekt = {
+                param: "to jest text znajdujacy sie w paramie obiektu"
+            };
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <h1>Przyklad z ksiazki strona (ng-bind): 28</h1>
+
+
+    <div ng-controller="ToJestController">
+        <h2 ng-bind="toJestObiekt.param"></h2>
+    </div>
+
+
+
+</body>
+
+</html>
