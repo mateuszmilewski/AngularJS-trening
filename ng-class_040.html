@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" ng-app="m">
+
+<head>
+    <meta charset="utf-8">
+    <title>ng-class</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <style>
+        .mystyle {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+    <script>
+        var m = angular.module("m", [])
+        // zbieznosc m - m przypadkowa :P
+        m.controller("Ctrl", function($scope) {
+
+            // Ctrl - controller
+            $scope.giveStyle = true;
+
+            $scope.toggleStyle = function() {
+                $scope.giveStyle = !$scope.giveStyle;
+
+                console.log("$scope.giveStyle: ", $scope.giveStyle)
+            }
+        });
+
+
+        // dla tego przykladu potrzbny jest nam jedynie angular.js - pozostale dla picu sa zalaczone.
+    </script>
+</head>
+
+<body>
+
+
+    <div ng-controller="Ctrl">
+
+        <!-- you can get a few after comma -->
+        <div ng-class="{mystyle: giveStyle}" ng-click="toggleStyle()">TEST POD MY-STYLE</div>
+    </div>
+
+
+
+</body>
+
+</html>

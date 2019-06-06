@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" ng-app="main">
+
+<head>
+    <meta charset="utf-8">
+    <title>ng-repeat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            color: gray;
+            background-color: black;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+    <script>
+        var mm = angular.module("main", [])
+
+
+        // przyklad ng-repeat z malym uzyciem rowniez ng-show
+
+        var outArr = [{
+                nm: 'Imie1',
+                id: 1
+            },
+            {
+                nm: 'Arek',
+                id: 2
+            },
+            {
+                nm: 'Jozek',
+                id: 3
+            },
+            {
+                nm: 'Zenon',
+                id: 4
+            }
+        ];
+
+
+
+        mm.controller("Ctrl", function($scope) {
+            $scope.arr = outArr;
+            $scope.imieNowejOsoby = null;
+
+
+            let zmienLabelGuzika = function() {
+                if (!$scope.poka) {
+                    $scope.nazwaGuzika = "Poka";
+                } else {
+                    $scope.nazwaGuzika = "Schow";
+                }
+            }
+
+
+            $scope.poka = false;
+            $scope.nazwaGuzika = "Poka";
+
+
+            $scope.dodajNowaOsoba = function() {
+                $scope.arr.push({
+                    nm: $scope.imieNowejOsoby,
+                    id: $scope.arr.length
+                });
+
+                console.log("Arr: ", $scope.arr);
+            }
+
+
+            $scope.forToggleBtn = function() {
+                $scope.poka = !$scope.poka;
+            }
+
+
+
+            $scope.$watch("poka", zmienLabelGuzika);
+
+
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <h1>Ng repeat Example</h1>
+
+
+    <div ng-controller="Ctrl">
+
+        <div>
+            <button class="btn btn-success" ng-click="forToggleBtn()"> {{ nazwaGuzika }} </button>
+        </div>
+
+
+        <input type="text" ng-model="imieNowejOsoby">
+        <button type="submit" ng-click="dodajNowaOsoba()">Dodaj</button>
+
+
+        <ul ng-show="poka">
+            <li ng-repeat="os in arr">
+                <span>{{$index}}</span>
+                <a href="/niestniejaca-sciezka/{{os.id}}"> {{ os.nm }} </a>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+</body>
+
+</html>
