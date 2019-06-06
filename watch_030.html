@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" ng-app="main">
+
+<head>
+    <meta charset="utf-8">
+    <title>watch</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+    <script>
+        var mm = angular.module("main", [])
+
+        mm.controller("Ctrl", function($scope) {
+
+            $scope.zmiennaKtoraBedzieObserwowana = 0;
+            $scope.drugaZmiennaKontrolujaca = 0;
+
+
+            let funkcjaZmieniajacaWartosc = function() {
+
+                if ($scope.drugaZmiennaKontrolujaca > 0) {
+                    $scope.zmiennaKtoraBedzieObserwowana = $scope.zmiennaKtoraBedzieObserwowana + (2 * $scope.drugaZmiennaKontrolujaca);
+                } else {
+                    $scope.zmiennaKtoraBedzieObserwowana = 0
+                }
+
+            }
+
+
+            // tutaj zamiast ng-change w takim razie
+            // dzialanie jest trywialnie proste
+            // patrzymy co sie dzieje u zmiennej i jesli dokonana zostala
+            // zmiana to lecimy z uruchomieniem funkcji
+            $scope.$watch("drugaZmiennaKontrolujaca", funkcjaZmieniajacaWartosc);
+
+            // tutaj drugi watch, ktory idzie kolejno zatem pierszym powyzej
+            // jest triggerowany poprzez uruchomienie funkcji: funkcjaZmieniajacaWartosc
+            $scope.$watch("zmiennaKtoraBedzieObserwowana", function() {
+                console.log("zmiennaKtoraBedzieObserwowana ", $scope.zmiennaKtoraBedzieObserwowana);
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <h1>Watch Example</h1>
+
+
+    <div ng-controller="Ctrl">
+
+        <input type="number" ng-model="zmiennaKtoraBedzieObserwowana">
+        <input type="number" ng-model="drugaZmiennaKontrolujaca">
+    </div>
+
+
+
+</body>
+
+</html>
