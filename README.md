@@ -12,11 +12,4 @@ work list :smile: :
 
 
 
-### TEST
-[![T](https://github.com/mateuszmilewski/AngularJS-trening)
 
-/play crickets
-
-/play crickets
-
-/play crickets
