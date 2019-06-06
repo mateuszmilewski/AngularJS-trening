@@ -13,6 +13,8 @@ work list :smile: :
 - [x] checkbox_029 - ng-model , ng-change, input type="checkbox"
 - [x] watch_039 - przyklad uzywania watcha w prosty sposob
 - [x] submit_032 - prosty przyklad ng-submit
+- [x] ng-repeat 36
+- [x] ng-class example (40)
 
 
 
