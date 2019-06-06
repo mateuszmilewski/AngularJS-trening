@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" ng-app>
+
+<head>
+    <meta charset="utf-8">
+    <title>Szablony po stronie klienta</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+    <script>
+        /*
+                                tutaj na bazie przykladu pierwszego (strona 14) dorzucamy do argumentow $location
+                                , co prawda nie kumam jeszcze do konca jak to dziala
+                                ale jasnym jest ze ng to nie banal i swiat sie nie konczy na $scope.
+                                tutaj jednoczesnie zostalo uzyte okreslenie wstrzykiwania
+                                tj $scope, $location wstrzykuje sie do konrolera
+                                */
+        function ToJestController($scope, $location) {
+            $scope.toJestObiekt = {
+                param: "to jest text znajdujacy sie w paramie obiektu",
+                lokalizacja: $location
+            };
+        }
+
+
+        // dla tego przykladu potrzbny jest nam jedynie angular.js - pozostale dla picu sa zalaczone.
+
+    </script>
+</head>
+
+<body>
+
+    <h1>Przyklad z ksiazki strona: 12</h1>
+
+
+    <div ng-controller="ToJestController">
+        <h2>
+            {{ toJestObiekt.param }}
+        </h2>
+
+        <div>
+            {{ toJestObiekt.lokalizacja }}
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
