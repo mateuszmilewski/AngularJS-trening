@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" ng-app>
+
+<head>
+    <meta charset="utf-8">
+    <title>Dyrektywy i przyklad z ng-repeat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+    <script>
+        // elementy rozszerzajace mozliwosci HTML nazywane sa dyrektywami
+        // sa to nawiasy klamrowe, czy slowa klucz jak ng-controller,
+        // czy ng-model
+        //
+        // bardzo interesujacym aspektem bedzie mozliwosc tworzenia wlasnych dyrektyw!
+        // ale to nie ten plik jeszcze :D
+        // tylko w ramach podtrzymania formy dorzucilem liste, ktora pokazuje
+        // jeden z istotniejszych elementow jesli chodzi o petle
+        // i mozliwosci generowania np. list
+        function ToJestController($scope) {
+            $scope.toJestObiekt = {
+                param: "to jest text znajdujacy sie w paramie obiektu",
+                tablica: [1, 2, 3, 4, 5, 6],
+                currElementInModel: 0
+            };
+
+            $scope.addNewElement = function() {
+                $scope.toJestObiekt.tablica.push($scope.toJestObiekt.currElementInModel);
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <h1>Dyrektywy i przyklad z ng-repeat: 17</h1>
+
+
+    <div ng-controller="ToJestController">
+        <h2>
+            {{ toJestObiekt.param }}
+        </h2>
+
+        <div ng-repeat="item in toJestObiekt.tablica track by $index">
+            kolejny element tablicy: {{ item }}
+        </div>
+
+        <input ng-model="toJestObiekt.currElementInModel">
+        <button class="btn btn-primary" ng-click="addNewElement()">Add</button>
+    </div>
+
+
+
+</body>
+
+</html>
