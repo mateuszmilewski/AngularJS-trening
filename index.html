@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" ng-app="mainMod">
+
+<head>
+    <meta charset="utf-8">
+    <title>Szablony po stronie klienta</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+    <script>
+        var mm = angular.module("mainMod", [])
+
+        mm.controller("ListHandler", function($scope) {
+            $scope.obj = {
+                arr: [
+                    "szablony_014",
+                    "dolaczanieDanych_015",
+                    "wstrzykiwanie_016",
+                    "dyrektywy_17",
+                    "modules_26",
+                    "ngbindexample_028",
+                    "checkbox_029"
+                ]
+            };
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <h1>Przyklad z ksiazki strona: 12</h1>
+
+
+    <div ng-controller="ListHandler">
+
+        <ul>
+            <li ng-repeat="item in obj.arr">
+                <a href="/{{item}}.html"> {{item}} </a>
+            </li>
+        </ul>
+    </div>
+
+
+
+</body>
+
+</html>
