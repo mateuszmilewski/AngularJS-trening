@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" ng-app="main">
+
+<head>
+    <meta charset="utf-8">
+    <title>ng-submit</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            color: gray;
+            background-color: black;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+    <script>
+        var mm = angular.module("main", [])
+
+        mm.controller("Ctrl", function($scope) {
+
+
+            $scope.forModel = "test";
+            $scope.forModel2 = 0;
+
+            $scope.forNgSubmit = function() {
+                // uruchamia sie dopiero jesli dokonamy zmiany dla wszystkich elementow forma
+                console.log("for ng-submit");
+            }
+
+            $scope.forSecInputFoobar = function() {
+                $scope.forModel2++;
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <h1>Ng Submit Example</h1>
+
+
+    <div ng-controller="Ctrl">
+
+        <form ng-submit="forNgSubmit()">
+            <input type="text" ng-model="forModel">
+            <input type="number" ng-model="forModel2" ng-change="forSecInputFoobar()">
+            <button class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+
+
+</body>
+
+</html>
