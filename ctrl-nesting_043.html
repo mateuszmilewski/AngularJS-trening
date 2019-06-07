@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" ng-app="main">
+
+<head>
+    <meta charset="utf-8">
+    <title>CtrlsNesting</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            color: gray;
+            background-color: black;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+    <script>
+        var mm = angular.module("main", [])
+
+
+        // przyklad prostego wykorzystania ng-href oraz ng-src
+
+        mm.controller("Ctrl", function($scope) {
+
+            $scope.zmienna = "test";
+
+        });
+
+
+        mm.controller("InnerCtrl", function($scope) {
+
+            $scope.innerZmienna = "inner-test";
+        })
+
+    </script>
+</head>
+
+<body>
+
+    <h1>Nesting Ctrls</h1>
+
+
+    <div ng-controller="Ctrl">
+
+        <div ng-controller="InnerCtrl">
+            <div>
+                {{ zmienna }}
+            </div>
+            <div>
+                {{ innerZmienna }}
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

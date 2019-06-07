@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" ng-app="main">
+
+<head>
+    <meta charset="utf-8">
+    <title>ng-href</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            color: gray;
+            background-color: black;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+    <script>
+        var mm = angular.module("main", [])
+
+
+        // przyklad prostego wykorzystania ng-href oraz ng-src
+
+        mm.controller("Ctrl", function($scope) {
+
+
+
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <h1>ExpressionsExample</h1>
+
+
+    <div ng-controller="Ctrl">
+
+        <!-- 
+            w klamrach mozna wykonywac calkiem "skomplikowane" rzeczy :)
+            jednak nie mozna np. robic anonimowych funkcji i od razu ich uruchamiac
+            takie cos nie zadziala -> klamry w skladni? hmmm...
+        -->
+        <div>
+            {{ 2 + 2 * 2 }}
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

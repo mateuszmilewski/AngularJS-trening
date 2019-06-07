@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" ng-app="main">
+
+<head>
+    <meta charset="utf-8">
+    <title>ng-href</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            color: gray;
+            background-color: black;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+    <script>
+        var mm = angular.module("main", [])
+
+
+        // przyklad prostego wykorzystania ng-href oraz ng-src
+
+        mm.controller("Ctrl", function($scope) {
+
+            $scope.zmienna = "test";
+
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <h1>Ng href and ng src Examples</h1>
+
+
+    <div ng-controller="Ctrl">
+
+        <!-- 
+            taki sam schmat wykorzystujemy dla img src
+            poniewaz obydwa te elementy sa dosyc nietoleracyjne 
+            jesli chodzi iterpolacje
+            zatem w ramach rozwiazania tej kwestii
+            zarowno a href i img src uzywamy specjalnej konstrukcji ng
+        -->
+        <a ng-href="/sub/{{zmienna}}"> {{ zmienna }}</a>
+
+    </div>
+
+
+
+</body>
+
+</html>
