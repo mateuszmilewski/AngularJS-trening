@@ -19,6 +19,7 @@ kilka branchy wokol angular-js  :+1: :+1: :+1:
 - [x] expressions (43)
 - [x] Controllers Nesting exmaple (43)
 - [x] watch 2nd example (45)
+- [x] factory example (53)
 
 
 
