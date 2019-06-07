@@ -2,7 +2,7 @@
 kilka branchy wokol angular-js  :+1: :+1: :+1:
 
 
-work list :smile: :
+ :smile: :
 
 - [x] szablony_14  - pierwszy prosty przykład kontrolera o zasiegu globalnego - takie hello.
 - [x] dolaczanieDanych_015 - pierwszy test ng-model
@@ -18,6 +18,7 @@ work list :smile: :
 - [x] ng-href example (42)
 - [x] expressions (43)
 - [x] Controllers Nesting exmaple (43)
+- [x] watch 2nd example (45)
 
 
 
