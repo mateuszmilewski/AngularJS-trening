@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" ng-app="main">
+
+<head>
+    <meta charset="utf-8">
+    <title>ng</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            color: gray;
+            background-color: black;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+    <script>
+        var mm = angular.module("main", [])
+
+
+        mm.controller("Ctrl1", function($scope, Fabryka) {
+            $scope.items = Fabryka.query;
+        });
+
+        mm.controller("Ctrl2", function(Fabryka, $scope) {
+            $scope.f = Fabryka;
+        });
+
+        mm.factory("Fabryka", function() {
+            let items = {};
+            // tutaj tylko na potrzeby testu...
+            // normalnie dane pobierane skads, np. z serwera
+            items.query = (function() {
+                arr = [1, 2, 3, 4];
+                return arr;
+            });
+
+            return items;
+
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <h1>Factory Example</h1>
+
+
+    <div ng-controller="Ctrl1">
+        <div ng-repeat="item in items()"> {{item}} </div>
+    </div>
+
+    <div ng-controller="Ctrl2">
+        <div ng-repeat="item in f.query()"> {{item}} </div>
+    </div>
+
+
+
+</body>
+
+</html>
