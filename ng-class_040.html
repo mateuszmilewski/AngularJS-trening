@@ -11,6 +11,16 @@
             color: red;
             font-size: 20px;
         }
+
+        .wybrany {
+            color: darkgreen;
+            font-size: 22px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
@@ -22,16 +32,36 @@
 
             // Ctrl - controller
             $scope.giveStyle = true;
+            $scope.wybranyWiersz = -1;
+
+            $scope.liczby = [
+                1,
+                2,
+                3,
+                4
+            ];
 
             $scope.toggleStyle = function() {
                 $scope.giveStyle = !$scope.giveStyle;
 
                 console.log("$scope.giveStyle: ", $scope.giveStyle)
             }
+
+
+            $scope.wybierz = function(i) {
+                if ($scope.wybranyWiersz == i) {
+                    $scope.wybranyWiersz = -1;
+                } else {
+                    $scope.wybranyWiersz = i;
+                }
+
+
+            }
         });
 
 
         // dla tego przykladu potrzbny jest nam jedynie angular.js - pozostale dla picu sa zalaczone.
+
     </script>
 </head>
 
@@ -42,8 +72,13 @@
 
         <!-- you can get a few after comma -->
         <div ng-class="{mystyle: giveStyle}" ng-click="toggleStyle()">TEST POD MY-STYLE</div>
-    </div>
 
+        <table>
+            <tr ng-class="{wybrany: ($index == wybranyWiersz)}" ng-repeat="liczba in liczby" ng-click="wybierz($index)">
+                <td> {{ liczba }} </td>
+            </tr>
+        </table>
+    </div>
 
 
 </body>
