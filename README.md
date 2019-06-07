@@ -15,6 +15,9 @@ work list :smile: :
 - [x] submit_032 - prosty przyklad ng-submit
 - [x] ng-repeat 36
 - [x] ng-class example (40)
+- [x] ng-href example (42)
+- [x] expressions (43)
+- [x] Controllers Nesting exmaple (43)
 
 
 
