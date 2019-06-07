@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" ng-app="main">
+
+<head>
+    <meta charset="utf-8">
+    <title>Watch II</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            color: gray;
+            background-color: black;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+    <script>
+        var mm = angular.module("main", []);
+
+
+        // przyklad watcha
+        // syntax:
+        // $scope.$watch( coMamyWatchowac, toRobimyJesliWatchowanyZostanieZmieniony, deepWatch)
+
+        // coMamyWatchowac - warto pilnowac sie tutaj z side effectami
+        //
+        // toRobimyJesliWatchowanyZostanieZmieniony - self-explanatory :)
+        // warto dla tego zapamietac, ze funkcja posiada 3 args: staraWartoscWatch, nowaWartoscWatch, zasieg
+        //
+        // deepWatch - jesli watchujemy obiekt i jesli deepWatch jest true, to wtedy ten watch sprawdza wszystkie jego
+        // parametry dokladnie
+
+
+        // ten przyklad jest dodatkowo urozmaicony nestowymi controllersami
+        // i tutaj jednoczesniej taki sam input na zewnatrz i wewnatrz
+
+        // i jest tu kilka kontrowersyjnosci w dzialaniu, ktore mam nadzieje zrozumiem z czasem :)
+
+
+
+        mm.controller("Ctrl", function($scope) {
+
+
+            $scope.licznik = 0;
+
+
+            let foo = function(oldVal, newVal) {
+                console.log("show: ", oldVal, newVal);
+
+
+                if (oldVal == "test") {
+                    console.log("stara wartosc byla: ", oldVal);
+
+
+                } else {
+                    console.log("stara wartosc to nie jest test, a: ", oldVal)
+                }
+
+
+                $scope.licznik++;
+            }
+
+
+            $scope.zmienna = "test";
+
+            $scope.$watch("zmienna", foo, true);
+
+        });
+
+
+        mm.controller("InnerCtrl", function($scope) {
+
+
+            $scope.innerLicznik = 0;
+            $scope.innerZmienna = 0;
+
+            let foo2 = function(oldVal, newVal) {
+                console.log("show2: ", oldVal, newVal);
+
+
+                if (oldVal == "test") {
+                    console.log("stara2 wartosc byla: ", oldVal);
+
+
+                } else {
+                    console.log("stara2 wartosc to nie jest test, a: ", oldVal)
+                }
+
+
+                $scope.innerLicznik++;
+            }
+
+
+            $scope.change1 = function() {
+                $scope.zmienna = "daj coś innego!";
+            };
+
+
+            $scope.$watch("zmienna", foo2, true);
+        })
+
+    </script>
+</head>
+
+<body>
+
+    <h1>Watch II</h1>
+
+
+    <div ng-controller="Ctrl">
+
+
+        <input ng-model="zmienna">
+
+        <div ng-controller="InnerCtrl">
+            <div>
+                {{ zmienna }}
+            </div>
+            <div>
+                {{ innerZmienna }}
+            </div>
+
+            <div> {{ licznik }} </div>
+            <div> {{ innerLicznik }} </div>
+
+            <input ng-model="zmienna">
+
+            <button class="btn btn-warning" ng-click="change1()">Guzik</button>
+
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>
