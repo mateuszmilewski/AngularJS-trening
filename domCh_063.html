@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="main">
+
+<head>
+    <meta charset="utf-8">
+    <title>ng DOM changes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            color: gray;
+            background-color: black;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+    <script>
+        var mm = angular.module("main", []);
+
+        mm.directive("ngbkFocus", function() {
+
+            return {
+                link: function(scope, element, attrs, controller) {
+
+
+                    console.log(element); // JQLite :D... 
+                    element[0].innerHTML = "Szybka zmiana dla tego elementu!";
+                    element[0].focus();
+                }
+            };
+
+        });
+
+        mm.controller("Ctrl1", function($scope) {
+            $scope.myObj = {};
+            $scope.myObj.zmienna = "to jest zawartosc zmiennej";
+
+            $scope.myObj.msg = {};
+
+            $scope.myObj.msg.text = "init";
+
+            $scope.clickUnfocused = function() {
+                $scope.myObj.msg.text = "click on unfocused";
+            }
+
+            $scope.clickFocused = function() {
+                $scope.myObj.msg.text = "click on focused";
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <h1>ng dom changes</h1>
+
+    <div ng-controller="Ctrl1">
+        <div> {{ myObj.zmienna }} </div>
+
+
+        <button class="btn btn-primary" ng-click="clickUnfocused()">Efekt nieaktywny!</button>
+        <button class="btn btn-primary" ngbk-focus ng-click="clickFocused()">Efekt aktywny!</button>
+
+        <div> {{ myObj.msg.text }} </div>
+    </div>
+
+</body>
+
+</html>
